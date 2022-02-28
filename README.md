@@ -2,7 +2,7 @@
 This is a technical test for a job as a Back End Engineer in JULO.
 
 
-## Setup (For Budget App)
+## Setup
 
   1. Please ensure you have `node`, `nodemon` and `sequelize-cli` installed globally on your machine.
   2. Execute `yarn install` script to install all the depedencies needed in the `mini-wallet-julo` folder.
