@@ -37,7 +37,6 @@ class WalletController {
         const status = "Enabled";
         const decodedToken = CryptoJS.AES.decrypt(token, process.env.SECRET_KEY).toString(CryptoJS.enc.Utf8);
         const dateNow = new Date().toISOString();
-        console.log(decodedToken)
 
         Wallet.findOne({
             where: { 
@@ -47,7 +46,6 @@ class WalletController {
         })
         .then((data) => {
             if (data && data.enabled_at) {
-                console.log('masuk if')
                 Wallet.create({
                     customer_id: data.customer_id,
                     status,
@@ -73,7 +71,6 @@ class WalletController {
                     res.status(500).json(err)
                 })
             } else {
-                console.log('masuk else')
                 Wallet.create({
                     customer_id: decodedToken,
                     status,
@@ -223,10 +220,6 @@ class WalletController {
             console.log(err)
             res.status(500).json(err)
         })
-
-        
-
-        
     };
 
     static withdrawMoney (req, res) {
@@ -289,8 +282,6 @@ class WalletController {
                     }
                 }
             }
-            
-
         })
         .catch(err => {
             res.status(500).json(err)
@@ -322,7 +313,6 @@ class WalletController {
                     returning: true
                 }
             )
-            // .then((wallet) => {
                 res.status(200).json({
                     status: "Success",
                     data : {
@@ -340,11 +330,6 @@ class WalletController {
                 console.log(err)
                 res.status(500).json(err)
             })  
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        //     res.status(500).json(err)
-        // })        
     };
 };
 
